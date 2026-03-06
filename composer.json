@@ -1,0 +1,34 @@
+{
+    "name": "byjg/llm-api-objects",
+    "description": "Strongly-typed PHP objects for LLM API request payloads",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "ByJG\\LlmApiObjects\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ByJG\\LlmApiObjects\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=8.3",
+        "byjg/anydataset-xml": "^6.0"
+    },
+    "require-dev": {
+        "openai-php/client": "^v0.19",
+        "vimeo/psalm": "^5.9|^6.13",
+        "phpunit/phpunit": "^10.5|^11.5"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "psalm": "vendor/bin/psalm"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": false
+        }
+    }
+}
