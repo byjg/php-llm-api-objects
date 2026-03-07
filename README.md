@@ -1,11 +1,4 @@
----
-tags: [php, ai]
----
-
 # LLM API Objects
-
-Strongly-typed PHP model layer for building OpenAI Chat Completions API request payloads.
-Works with both OpenAI and Ollama (via the `/v1` OpenAI-compatible endpoint) using the [`openai-php/client`](https://github.com/openai-php/client).
 
 [![Sponsor](https://img.shields.io/badge/Sponsor-%23ea4aaa?logo=githubsponsors&logoColor=white&labelColor=0d1117)](https://github.com/sponsors/byjg)
 [![Build Status](https://github.com/byjg/llm-api-objects/actions/workflows/phpunit.yml/badge.svg?branch=master)](https://github.com/byjg/llm-api-objects/actions/workflows/phpunit.yml)
@@ -13,6 +6,9 @@ Works with both OpenAI and Ollama (via the `/v1` OpenAI-compatible endpoint) usi
 [![GitHub source](https://img.shields.io/badge/Github-source-informational?logo=github)](https://github.com/byjg/llm-api-objects/)
 [![GitHub license](https://img.shields.io/github/license/byjg/llm-api-objects.svg)](https://opensource.byjg.com/opensource/licensing.html)
 [![GitHub release](https://img.shields.io/github/release/byjg/llm-api-objects.svg)](https://github.com/byjg/llm-api-objects/releases/)
+
+Strongly-typed PHP model layer for building OpenAI Chat Completions API request payloads.
+Works with both OpenAI and Ollama (via the `/v1` OpenAI-compatible endpoint) using the [`openai-php/client`](https://github.com/openai-php/client).
 
 ## Features
 
@@ -27,12 +23,12 @@ Works with both OpenAI and Ollama (via the `/v1` OpenAI-compatible endpoint) usi
 
 ## Documentation
 
-- [Getting Started](getting-started) — Installation and first request
-- [Chat Model](chat) — Building and sending chat requests
-- [Messages](messages) — Roles, content, `tool_call_id`, `tool_calls`
-- [Tools](tools) — Function calling: Tool, ToolFunction, ToolParameter, ToolChoice
-- [Model Parameters](model-parameters) — Ollama model tuning parameters
-- [Importers](importers) — Jira XML/RSS importers
+- [Getting Started](docs/getting-started.md) — Installation and first request
+- [Chat Model](docs/chat.md) — Building and sending chat requests
+- [Messages](docs/messages.md) — Roles, content, `tool_call_id`, `tool_calls`
+- [Tools](docs/tools.md) — Function calling: Tool, ToolFunction, ToolParameter, ToolChoice
+- [Model Parameters](docs/model-parameters.md) — Ollama model tuning parameters
+- [Importers](docs/importers.md) — Jira XML/RSS importers
 
 ## Quick Examples
 
