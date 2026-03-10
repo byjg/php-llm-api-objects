@@ -1,4 +1,12 @@
+---
+sidebar_key: llm-api-objects
+tags: [php, ai]
+---
+
 # LLM API Objects
+
+Strongly-typed PHP model layer for building OpenAI Chat Completions API request payloads.
+Works with both OpenAI and Ollama (via the `/v1` OpenAI-compatible endpoint) using the [`openai-php/client`](https://github.com/openai-php/client).
 
 [![Sponsor](https://img.shields.io/badge/Sponsor-%23ea4aaa?logo=githubsponsors&logoColor=white&labelColor=0d1117)](https://github.com/sponsors/byjg)
 [![Build Status](https://github.com/byjg/llm-api-objects/actions/workflows/phpunit.yml/badge.svg?branch=master)](https://github.com/byjg/llm-api-objects/actions/workflows/phpunit.yml)
@@ -6,9 +14,6 @@
 [![GitHub source](https://img.shields.io/badge/Github-source-informational?logo=github)](https://github.com/byjg/llm-api-objects/)
 [![GitHub license](https://img.shields.io/github/license/byjg/llm-api-objects.svg)](https://opensource.byjg.com/opensource/licensing.html)
 [![GitHub release](https://img.shields.io/github/release/byjg/llm-api-objects.svg)](https://github.com/byjg/llm-api-objects/releases/)
-
-Strongly-typed PHP model layer for building OpenAI Chat Completions API request payloads.
-Works with both OpenAI and Ollama (via the `/v1` OpenAI-compatible endpoint) using the [`openai-php/client`](https://github.com/openai-php/client).
 
 ## Features
 
