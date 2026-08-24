@@ -5,3 +5,5 @@ vendor
 .idea
 .phpunit.result.cache
 .claude
+
+.do-not-commit
