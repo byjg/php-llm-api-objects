@@ -13,18 +13,23 @@
             "ByJG\\LlmApiObjects\\Tests\\": "tests/"
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
-        "php": ">=8.3",
-        "byjg/anydataset-xml": "^6.0"
+        "php": ">=8.3 <8.7",
+        "byjg/anydataset-xml": "^7.0"
     },
     "require-dev": {
         "openai-php/client": "^v0.19",
-        "vimeo/psalm": "^5.9|^6.13",
-        "phpunit/phpunit": "^10.5|^11.5"
+
+        "phpunit/phpunit": "^12.5"
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "psalm": "vendor/bin/psalm"
+        "psalm": [
+      "@composer --working-dir=tools/psalm update --no-interaction",
+      "tools/psalm/vendor/bin/psalm"
+    ]
     },
     "config": {
         "allow-plugins": {
