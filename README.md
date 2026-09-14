@@ -12,7 +12,7 @@ Works with both OpenAI and Ollama (via the `/v1` OpenAI-compatible endpoint) usi
 [![Build Status](https://github.com/byjg/llm-api-objects/actions/workflows/phpunit.yml/badge.svg?branch=master)](https://github.com/byjg/llm-api-objects/actions/workflows/phpunit.yml)
 [![Opensource ByJG](https://img.shields.io/badge/opensource-byjg-success.svg)](http://opensource.byjg.com)
 [![GitHub source](https://img.shields.io/badge/Github-source-informational?logo=github)](https://github.com/byjg/llm-api-objects/)
-[![GitHub license](https://img.shields.io/github/license/byjg/llm-api-objects.svg)](https://opensource.byjg.com/opensource/licensing.html)
+[![GitHub license](https://img.shields.io/github/license/byjg/llm-api-objects.svg)](https://opensource.byjg.com/license/)
 [![GitHub release](https://img.shields.io/github/release/byjg/llm-api-objects.svg)](https://github.com/byjg/llm-api-objects/releases/)
 
 ## Features
@@ -130,13 +130,6 @@ composer require byjg/llm-api-objects
 
 ```bash
 composer test
-```
-
-## Dependencies
-
-```mermaid
-flowchart TD
-    byjg/llm-api-objects --> byjg/anydataset-xml
 ```
 
 ----
