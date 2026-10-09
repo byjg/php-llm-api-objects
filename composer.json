@@ -10,7 +10,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "ByJG\\LlmApiObjects\\Tests\\": "tests/"
+            "Tests\\": "tests/"
         }
     },
     "minimum-stability": "dev",
@@ -22,14 +22,12 @@
     "require-dev": {
         "openai-php/client": "^v0.19",
 
-        "phpunit/phpunit": "^12.5"
+        "phpunit/phpunit": "^12.5",
+        "psalm/phar": "^6.16"
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "psalm": [
-      "@composer --working-dir=tools/psalm update --no-interaction",
-      "tools/psalm/vendor/bin/psalm"
-    ]
+        "psalm": "vendor/bin/psalm.phar"
     },
     "config": {
         "allow-plugins": {

@@ -1,6 +1,6 @@
 <?php
 
-namespace ByJG\LlmApiObjects\Tests\Model;
+namespace Tests\Model;
 
 use ByJG\LlmApiObjects\Enum\Role;
 use ByJG\LlmApiObjects\Enum\ToolChoice;

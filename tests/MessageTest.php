@@ -1,6 +1,6 @@
 <?php
 
-namespace ByJG\LlmApiObjects\Tests;
+namespace Tests;
 
 use ByJG\LlmApiObjects\Enum\Role;
 use ByJG\LlmApiObjects\Model\Message;
