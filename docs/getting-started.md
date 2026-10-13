@@ -54,7 +54,7 @@ use ByJG\LlmApiObjects\Model\Message;
 $chat = new Chat(
     model: 'gpt-4o',
     messages: [
-        new Message(role: Role::user, message: 'What is the capital of France?'),
+        new Message(role: Role::User, message: 'What is the capital of France?'),
     ],
     system: 'You are a helpful assistant.',
 );
@@ -81,9 +81,9 @@ use ByJG\LlmApiObjects\Model\Message;
 $chat = new Chat(
     model: 'gpt-4o',
     messages: [
-        new Message(role: Role::user,      message: 'My name is Alice.'),
-        new Message(role: Role::assistant, message: 'Nice to meet you, Alice!'),
-        new Message(role: Role::user,      message: 'What is my name?'),
+        new Message(role: Role::User,      message: 'My name is Alice.'),
+        new Message(role: Role::Assistant, message: 'Nice to meet you, Alice!'),
+        new Message(role: Role::User,      message: 'What is my name?'),
     ],
 );
 

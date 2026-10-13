@@ -169,11 +169,11 @@ $weatherTool = new Tool(
 $chat = new Chat(
     model: 'gpt-4o',
     messages: [
-        new Message(role: Role::user, message: "What's the weather like in Boston?"),
+        new Message(role: Role::User, message: "What's the weather like in Boston?"),
     ],
 );
 $chat->addTool($weatherTool);
-$chat->setToolChoice(ToolChoice::auto);
+$chat->setToolChoice(ToolChoice::Auto);
 
 // First call: model may respond with tool_calls
 $response = $client->chat()->create($chat->toApi());
@@ -190,14 +190,14 @@ if (!empty($assistantMessage->toolCalls)) {
     $followUp = new Chat(
         model: 'gpt-4o',
         messages: [
-            new Message(role: Role::user, message: "What's the weather like in Boston?"),
+            new Message(role: Role::User, message: "What's the weather like in Boston?"),
             new Message(
-                role: Role::assistant,
+                role: Role::Assistant,
                 message: null,
                 toolCalls: array_map(fn($tc) => $tc->toArray(), $assistantMessage->toolCalls),
             ),
             new Message(
-                role: Role::tool,
+                role: Role::Tool,
                 message: json_encode($weatherResult),
                 toolCallId: $toolCall->id,
             ),

@@ -4,7 +4,7 @@ namespace ByJG\LlmApiObjects\Enum;
 
 enum ToolChoice: string
 {
-    case auto = 'auto';
-    case none = 'none';
-    case required = 'required';
+    case Auto = 'auto';
+    case None = 'none';
+    case Required = 'required';
 }

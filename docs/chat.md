@@ -104,7 +104,7 @@ $chat->addTool(new Tool(
     ),
 ));
 
-$chat->setToolChoice(ToolChoice::auto);
+$chat->setToolChoice(ToolChoice::Auto);
 ```
 
 ## Ollama Model Parameters
@@ -114,8 +114,8 @@ Use `setParameter()` to set Ollama-specific generation parameters. These are ser
 ```php
 use ByJG\LlmApiObjects\Enum\ModelFileParameters;
 
-$chat->setParameter(ModelFileParameters::temperature, 0.7);
-$chat->setParameter(ModelFileParameters::numCtx, 4096);
+$chat->setParameter(ModelFileParameters::Temperature, 0.7);
+$chat->setParameter(ModelFileParameters::NumCtx, 4096);
 ```
 
 See [Model Parameters](model-parameters.md) for the full list of available parameters and their valid ranges.

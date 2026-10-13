@@ -1,6 +1,6 @@
 <?php
 
-namespace ByJG\LlmApiObjects\Tests\Tool;
+namespace Tests\Tool;
 
 use ByJG\LlmApiObjects\Tool\ToolParameter;
 use PHPUnit\Framework\TestCase;

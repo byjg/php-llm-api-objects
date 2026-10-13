@@ -103,11 +103,11 @@ $chat = new Chat(
     model: 'gpt-4o',
     messages: [
         // Turn 1: user asks
-        new Message(role: Role::user, message: "What's the weather in Paris?"),
+        new Message(role: Role::User, message: "What's the weather in Paris?"),
         // Turn 2: assistant responds with a tool call (null content)
-        new Message(role: Role::assistant, message: null, toolCalls: $toolCalls),
+        new Message(role: Role::Assistant, message: null, toolCalls: $toolCalls),
         // Turn 3: tool result
-        new Message(role: Role::tool, message: '{"temperature":22,"unit":"celsius"}', toolCallId: 'call_abc123'),
+        new Message(role: Role::Tool, message: '{"temperature":22,"unit":"celsius"}', toolCallId: 'call_abc123'),
     ],
 );
 
