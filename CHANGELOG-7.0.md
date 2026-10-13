@@ -5,7 +5,17 @@
 
 ## Breaking Changes
 
-- None.
+### Enum cases renamed to PascalCase
+
+Enum cases follow the ByJG standard and are written in PascalCase. The backed values did not
+change, so `->value`, `from()`, `tryFrom()` and stored data are not affected; only code that
+names a case (or reads `->name`) has to be updated.
+
+| Enum | Before (6.x) | After (7.0) |
+|---|---|---|
+| `ModelFileParameters` | `mirostat`, `mirostatEta`, `mirostatTau`, `numCtx`, `repeatLastN`, `repeatPenalty`, `temperature`, `seed`, `stop`, `tfsZ`, `numPredict`, `topK`, `topP`, `minP` | `Mirostat`, `MirostatEta`, `MirostatTau`, `NumCtx`, `RepeatLastN`, `RepeatPenalty`, `Temperature`, `Seed`, `Stop`, `TfsZ`, `NumPredict`, `TopK`, `TopP`, `MinP` |
+| `Role` | `user`, `assistant`, `system`, `developer`, `tool` | `User`, `Assistant`, `System`, `Developer`, `Tool` |
+| `ToolChoice` | `auto`, `none`, `required` | `Auto`, `None`, `Required` |
 
 ## Requirements
 

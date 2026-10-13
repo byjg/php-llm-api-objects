@@ -52,7 +52,7 @@ $chat = new \ByJG\LlmApiObjects\Model\Chat(
     model: 'gpt-4o',
     messages: [
         new \ByJG\LlmApiObjects\Model\Message(
-            role: \ByJG\LlmApiObjects\Enum\Role::user,
+            role: \ByJG\LlmApiObjects\Enum\Role::User,
             message: 'What is the capital of France?',
         ),
     ],
@@ -76,7 +76,7 @@ $chat = new \ByJG\LlmApiObjects\Model\Chat(
     model: 'llama3',
     messages: [
         new \ByJG\LlmApiObjects\Model\Message(
-            role: \ByJG\LlmApiObjects\Enum\Role::user,
+            role: \ByJG\LlmApiObjects\Enum\Role::User,
             message: 'Hello!',
         ),
     ],
@@ -112,11 +112,11 @@ $weatherTool = new Tool(
 $chat = new Chat(
     model: 'gpt-4o',
     messages: [
-        new Message(role: Role::user, message: "What's the weather in Paris?"),
+        new Message(role: Role::User, message: "What's the weather in Paris?"),
     ],
 );
 $chat->addTool($weatherTool);
-$chat->setToolChoice(ToolChoice::auto);
+$chat->setToolChoice(ToolChoice::Auto);
 
 $result = $client->chat()->create($chat->toApi());
 ```

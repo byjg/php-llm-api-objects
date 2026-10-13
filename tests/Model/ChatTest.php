@@ -20,7 +20,7 @@ class ChatTest extends TestCase
     public function testBasicChatToApiShape(): void
     {
         $chat = new Chat(model: 'gpt-4o', messages: [
-            new Message(role: Role::user, message: 'Hello'),
+            new Message(role: Role::User, message: 'Hello'),
         ]);
         $api = $chat->toApi();
 
@@ -35,7 +35,7 @@ class ChatTest extends TestCase
     {
         $chat = new Chat(
             model: 'gpt-4o',
-            messages: [new Message(role: Role::user, message: 'Hi')],
+            messages: [new Message(role: Role::User, message: 'Hi')],
             system: 'You are a helpful assistant.',
         );
         $api = $chat->toApi();
@@ -49,8 +49,8 @@ class ChatTest extends TestCase
     public function testMessageRolesAreStrings(): void
     {
         $chat = new Chat(model: 'gpt-4o', messages: [
-            new Message(role: Role::user, message: 'Hello'),
-            new Message(role: Role::assistant, message: 'Hi there'),
+            new Message(role: Role::User, message: 'Hello'),
+            new Message(role: Role::Assistant, message: 'Hi there'),
         ]);
         $api = $chat->toApi();
 
@@ -67,7 +67,7 @@ class ChatTest extends TestCase
     public function testNoToolsKeyWhenEmpty(): void
     {
         $chat = new Chat(model: 'gpt-4o', messages: [
-            new Message(role: Role::user, message: 'Hello'),
+            new Message(role: Role::User, message: 'Hello'),
         ]);
         $api = $chat->toApi();
 
@@ -78,7 +78,7 @@ class ChatTest extends TestCase
     public function testSingleToolAppearsInApi(): void
     {
         $chat = new Chat(model: 'gpt-4o', messages: [
-            new Message(role: Role::user, message: 'What is the weather?'),
+            new Message(role: Role::User, message: 'What is the weather?'),
         ]);
         $chat->addTool(new Tool(new ToolFunction(
             name: 'get_weather',
@@ -98,7 +98,7 @@ class ChatTest extends TestCase
     public function testMultipleToolsInApi(): void
     {
         $chat = new Chat(model: 'gpt-4o', messages: [
-            new Message(role: Role::user, message: 'Hello'),
+            new Message(role: Role::User, message: 'Hello'),
         ]);
         $chat->addTool(new Tool(new ToolFunction(name: 'tool_a')));
         $chat->addTool(new Tool(new ToolFunction(name: 'tool_b')));
@@ -116,10 +116,10 @@ class ChatTest extends TestCase
     public function testToolChoiceAutoValue(): void
     {
         $chat = new Chat(model: 'gpt-4o', messages: [
-            new Message(role: Role::user, message: 'Hello'),
+            new Message(role: Role::User, message: 'Hello'),
         ]);
         $chat->addTool(new Tool(new ToolFunction(name: 'my_fn')));
-        $chat->setToolChoice(ToolChoice::auto);
+        $chat->setToolChoice(ToolChoice::Auto);
         $api = $chat->toApi();
 
         $this->assertSame('auto', $api['tool_choice']);
@@ -128,10 +128,10 @@ class ChatTest extends TestCase
     public function testToolChoiceNoneValue(): void
     {
         $chat = new Chat(model: 'gpt-4o', messages: [
-            new Message(role: Role::user, message: 'Hello'),
+            new Message(role: Role::User, message: 'Hello'),
         ]);
         $chat->addTool(new Tool(new ToolFunction(name: 'my_fn')));
-        $chat->setToolChoice(ToolChoice::none);
+        $chat->setToolChoice(ToolChoice::None);
         $api = $chat->toApi();
 
         $this->assertSame('none', $api['tool_choice']);
@@ -140,10 +140,10 @@ class ChatTest extends TestCase
     public function testToolChoiceRequiredValue(): void
     {
         $chat = new Chat(model: 'gpt-4o', messages: [
-            new Message(role: Role::user, message: 'Hello'),
+            new Message(role: Role::User, message: 'Hello'),
         ]);
         $chat->addTool(new Tool(new ToolFunction(name: 'my_fn')));
-        $chat->setToolChoice(ToolChoice::required);
+        $chat->setToolChoice(ToolChoice::Required);
         $api = $chat->toApi();
 
         $this->assertSame('required', $api['tool_choice']);
@@ -153,7 +153,7 @@ class ChatTest extends TestCase
     {
         $tool = new Tool(new ToolFunction(name: 'get_weather'));
         $chat = new Chat(model: 'gpt-4o', messages: [
-            new Message(role: Role::user, message: 'Hello'),
+            new Message(role: Role::User, message: 'Hello'),
         ]);
         $chat->addTool($tool);
         $chat->setToolChoice($tool->asChoice());
@@ -172,8 +172,8 @@ class ChatTest extends TestCase
     public function testDeveloperRoleInMessages(): void
     {
         $chat = new Chat(model: 'gpt-4o', messages: [
-            new Message(role: Role::developer, message: 'Always respond in JSON.'),
-            new Message(role: Role::user, message: 'Hello'),
+            new Message(role: Role::Developer, message: 'Always respond in JSON.'),
+            new Message(role: Role::User, message: 'Hello'),
         ]);
         $api = $chat->toApi();
 
@@ -192,9 +192,9 @@ class ChatTest extends TestCase
         ];
 
         $chat = new Chat(model: 'gpt-4o', messages: [
-            new Message(role: Role::user, message: 'What is the weather in Paris?'),
-            new Message(role: Role::assistant, message: null, toolCalls: $toolCalls),
-            new Message(role: Role::tool, message: '{"temperature": 22, "unit": "celsius"}', toolCallId: 'call_abc123'),
+            new Message(role: Role::User, message: 'What is the weather in Paris?'),
+            new Message(role: Role::Assistant, message: null, toolCalls: $toolCalls),
+            new Message(role: Role::Tool, message: '{"temperature": 22, "unit": "celsius"}', toolCallId: 'call_abc123'),
         ]);
         $api = $chat->toApi();
 
@@ -217,9 +217,9 @@ class ChatTest extends TestCase
     {
         // Simulates the multi-turn: user -> assistant -> tool result
         $chat = new Chat(model: 'gpt-4o', messages: [
-            new Message(role: Role::user, message: 'What is the weather in Paris?'),
-            new Message(role: Role::assistant, message: 'I will check the weather for you.'),
-            new Message(role: Role::tool, message: '{"temperature": 22, "unit": "celsius"}', toolCallId: 'call_abc123'),
+            new Message(role: Role::User, message: 'What is the weather in Paris?'),
+            new Message(role: Role::Assistant, message: 'I will check the weather for you.'),
+            new Message(role: Role::Tool, message: '{"temperature": 22, "unit": "celsius"}', toolCallId: 'call_abc123'),
         ]);
         $api = $chat->toApi();
 
@@ -259,11 +259,11 @@ class ChatTest extends TestCase
         $chat = new Chat(
             model: 'gpt-4o',
             messages: [
-                new Message(role: Role::user, message: "What's the weather like in Boston?"),
+                new Message(role: Role::User, message: "What's the weather like in Boston?"),
             ],
         );
         $chat->addTool($weatherTool);
-        $chat->setToolChoice(ToolChoice::auto);
+        $chat->setToolChoice(ToolChoice::Auto);
 
         $api = $chat->toApi();
 

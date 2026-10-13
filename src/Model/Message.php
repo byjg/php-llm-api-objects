@@ -7,7 +7,7 @@ use ByJG\LlmApiObjects\Enum\Role;
 class Message
 {
     public function __construct(
-        public Role $role = Role::user,
+        public Role $role = Role::User,
         public ?string $message = '',
         public string $delimiter = '',
         public int $maxTokens = 2048,
