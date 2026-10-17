@@ -123,9 +123,9 @@ use ByJG\LlmApiObjects\Enum\ToolChoice;
 
 | Case | API value | Behaviour |
 |---|---|---|
-| `ToolChoice::auto` | `"auto"` | Model decides whether to call a tool |
-| `ToolChoice::none` | `"none"` | Model never calls a tool |
-| `ToolChoice::required` | `"required"` | Model must call at least one tool |
+| `ToolChoice::Auto` | `"auto"` | Model decides whether to call a tool |
+| `ToolChoice::None` | `"none"` | Model never calls a tool |
+| `ToolChoice::Required` | `"required"` | Model must call at least one tool |
 
 To force a specific function, pass the result of `Tool::asChoice()`:
 

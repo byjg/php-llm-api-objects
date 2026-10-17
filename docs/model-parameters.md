@@ -25,15 +25,15 @@ These parameters are Ollama-specific. They are sent under the `options` key, whi
 
 | Enum case | API key | Type | Valid values | Default | Description |
 |---|---|---|---|---|---|
-| `mirostat` | `mirostat` | `int` | `0`, `1`, `2` | `0` | Enable Mirostat sampling. `0` = disabled, `1` = Mirostat, `2` = Mirostat 2.0 |
+| `Mirostat` | `mirostat` | `int` | `0`, `1`, `2` | `0` | Enable Mirostat sampling. `0` = disabled, `1` = Mirostat, `2` = Mirostat 2.0 |
 | `MirostatEta` | `mirostat_eta` | `float` | `≥ 0` | `0.1` | Mirostat learning rate — how quickly the algorithm responds to feedback |
 | `MirostatTau` | `mirostat_tau` | `float` | `≥ 0` | `5.0` | Controls the balance between coherence and diversity |
 | `NumCtx` | `num_ctx` | `int` | `> 0` | `2048` | Context window size in tokens |
 | `RepeatLastN` | `repeat_last_n` | `int` | `≥ -1` | `64` | How far back to look to prevent repetition. `0` = disabled, `-1` = `num_ctx` |
 | `RepeatPenalty` | `repeat_penalty` | `float` | `> 0` | `1.1` | Strength of repetition penalty. Higher = penalizes more |
-| `Temperature` | `Temperature` | `float` | `> 0` | `0.8` | Creativity of responses. Higher = more creative |
-| `seed` | `seed` | `int` | `≥ 0` | `0` | Random seed for reproducible generation |
-| `stop` | `stop` | `string` | any string | — | Stop sequence. Generation halts when this pattern is encountered |
+| `Temperature` | `temperature` | `float` | `> 0` | `0.8` | Creativity of responses. Higher = more creative |
+| `Seed` | `seed` | `int` | `≥ 0` | `0` | Random seed for reproducible generation |
+| `Stop` | `stop` | `string` | any string | — | Stop sequence. Generation halts when this pattern is encountered |
 | `TfsZ` | `tfs_z` | `float` | `≥ 1` | `1` | Tail free sampling. Higher = reduces impact of low-probability tokens. `1.0` = disabled |
 | `NumPredict` | `num_predict` | `int` | `≥ -1` | `-1` | Max tokens to generate. `-1` = infinite |
 | `TopK` | `top_k` | `int` | `> 0` | `40` | Limits token selection to the top K tokens. Higher = more diverse |
@@ -70,11 +70,11 @@ Each parameter has strict validation. Invalid values throw `\InvalidArgumentExce
 
 ```php
 // OK
-$chat->setParameter(ModelFileParameters::mirostat, 1);
+$chat->setParameter(ModelFileParameters::Mirostat, 1);
 
 // Throws InvalidArgumentException — mirostat only accepts 0, 1, or 2
-$chat->setParameter(ModelFileParameters::mirostat, 3);
+$chat->setParameter(ModelFileParameters::Mirostat, 3);
 
 // Throws InvalidArgumentException — temperature must be > 0
-$chat->setParameter(ModelFileParameters::temperature, -0.5);
+$chat->setParameter(ModelFileParameters::Temperature, -0.5);
 ```

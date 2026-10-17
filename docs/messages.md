@@ -33,23 +33,23 @@ The `Role` enum defines all valid message roles:
 
 | Case | API value | When to use |
 |---|---|---|
-| `Role::user` | `user` | End-user input |
-| `Role::assistant` | `assistant` | Model response |
-| `Role::system` | `system` | System instructions (prefer the `system` param on `Chat`) |
-| `Role::developer` | `developer` | Application-level instructions, between system and user in priority |
-| `Role::tool` | `tool` | Tool execution result (requires `toolCallId`) |
+| `Role::User` | `user` | End-user input |
+| `Role::Assistant` | `assistant` | Model response |
+| `Role::System` | `system` | System instructions (prefer the `system` param on `Chat`) |
+| `Role::Developer` | `developer` | Application-level instructions, between system and user in priority |
+| `Role::Tool` | `tool` | Tool execution result (requires `toolCallId`) |
 
 :::tip
-For system-level instructions, prefer the `system` constructor argument on `Chat` rather than creating a `Message` with `Role::system` manually. The `Chat` model prepends it automatically in `toApi()`.
+For system-level instructions, prefer the `system` constructor argument on `Chat` rather than creating a `Message` with `Role::System` manually. The `Chat` model prepends it automatically in `toApi()`.
 :::
 
 ## Basic Usage
 
 ```php
-new Message(role: Role::user, message: 'Hello, how are you?')
-new Message(role: Role::assistant, message: 'I am doing well, thank you!')
-new Message(role: Role::system, message: 'Always be concise.')
-new Message(role: Role::developer, message: 'Always respond in JSON.')
+new Message(role: Role::User, message: 'Hello, how are you?')
+new Message(role: Role::Assistant, message: 'I am doing well, thank you!')
+new Message(role: Role::System, message: 'Always be concise.')
+new Message(role: Role::Developer, message: 'Always respond in JSON.')
 ```
 
 ## Tool Result Messages (role=tool)
@@ -58,7 +58,7 @@ When the model responds with a tool call, you must send the result back using `r
 
 ```php
 new Message(
-    role: Role::tool,
+    role: Role::Tool,
     message: '{"temperature": 22, "unit": "celsius"}',
     toolCallId: 'call_abc123',
 )
@@ -80,7 +80,7 @@ $toolCalls = [
 ];
 
 new Message(
-    role: Role::assistant,
+    role: Role::Assistant,
     message: null,         // null content is valid when tool_calls are present
     toolCalls: $toolCalls,
 )
@@ -120,11 +120,11 @@ echo $result->choices[0]->message->content;
 
 ### By Token Count
 
-`explodeMessage()` splits content into chunks that do not exceed `maxTokens`. Each chunk becomes a separate message in the `toApi()` output. This is useful when feeding large text blobs that need to stay within context limits:
+`toApi()` splits content into chunks that do not exceed `maxTokens`. Each chunk becomes a separate message in the `toApi()` output. This is useful when feeding large text blobs that need to stay within context limits:
 
 ```php
 new Message(
-    role: Role::user,
+    role: Role::User,
     message: $veryLongText,
     maxTokens: 1000,
 )
@@ -140,7 +140,7 @@ Set `delimiter` to split the message on a string. Each part is treated as an ind
 
 ```php
 new Message(
-    role: Role::user,
+    role: Role::User,
     message: "part one|part two|part three",
     delimiter: '|',
 )
