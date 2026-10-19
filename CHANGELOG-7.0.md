@@ -17,6 +17,13 @@ names a case (or reads `->name`) has to be updated.
 | `Role` | `user`, `assistant`, `system`, `developer`, `tool` | `User`, `Assistant`, `System`, `Developer`, `Tool` |
 | `ToolChoice` | `auto`, `none`, `required` | `Auto`, `None`, `Required` |
 
+### `Api\Ollama` removed
+
+`ByJG\LlmApiObjects\Api\Ollama` was an empty class with no behaviour and was not used by the
+library. It is removed; Ollama is still supported through its OpenAI-compatible `/v1` endpoint
+(see [Getting Started](docs/getting-started.md)). Code that referenced the class only has to
+drop the reference.
+
 ## Requirements
 
 - PHP 8.3, 8.4, 8.5 and 8.6 are now supported: `"php": ">=8.3 <8.7"`.
