@@ -17,7 +17,7 @@ class Chat extends Model
         }
 
         if (!empty($this->system)) {
-            $systemMessage = new Message(role: Role::system, message: $this->system);
+            $systemMessage = new Message(role: Role::System, message: $this->system);
             array_unshift($apiAr['messages'], $systemMessage->toApi()[0]);
         }
 

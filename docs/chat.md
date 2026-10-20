@@ -63,7 +63,7 @@ Set a system prompt via the `system` constructor argument. It is prepended to `m
 $chat = new Chat(
     model: 'gpt-4o',
     messages: [
-        new Message(role: Role::user, message: 'Hello!'),
+        new Message(role: Role::User, message: 'Hello!'),
     ],
     system: 'You are a helpful assistant. Always respond in English.',
 );
@@ -104,7 +104,7 @@ $chat->addTool(new Tool(
     ),
 ));
 
-$chat->setToolChoice(ToolChoice::auto);
+$chat->setToolChoice(ToolChoice::Auto);
 ```
 
 ## Ollama Model Parameters
@@ -114,8 +114,10 @@ Use `setParameter()` to set Ollama-specific generation parameters. These are ser
 ```php
 use ByJG\LlmApiObjects\Enum\ModelFileParameters;
 
-$chat->setParameter(ModelFileParameters::temperature, 0.7);
-$chat->setParameter(ModelFileParameters::numCtx, 4096);
+$chat->setParameter(ModelFileParameters::Temperature, 0.7);
+$chat->setParameter(ModelFileParameters::NumCtx, 4096);
 ```
+
+`getParameters()` returns the parameters set so far, keyed by their API name.
 
 See [Model Parameters](model-parameters.md) for the full list of available parameters and their valid ranges.

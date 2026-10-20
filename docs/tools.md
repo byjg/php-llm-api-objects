@@ -123,9 +123,9 @@ use ByJG\LlmApiObjects\Enum\ToolChoice;
 
 | Case | API value | Behaviour |
 |---|---|---|
-| `ToolChoice::auto` | `"auto"` | Model decides whether to call a tool |
-| `ToolChoice::none` | `"none"` | Model never calls a tool |
-| `ToolChoice::required` | `"required"` | Model must call at least one tool |
+| `ToolChoice::Auto` | `"auto"` | Model decides whether to call a tool |
+| `ToolChoice::None` | `"none"` | Model never calls a tool |
+| `ToolChoice::Required` | `"required"` | Model must call at least one tool |
 
 To force a specific function, pass the result of `Tool::asChoice()`:
 
@@ -169,11 +169,11 @@ $weatherTool = new Tool(
 $chat = new Chat(
     model: 'gpt-4o',
     messages: [
-        new Message(role: Role::user, message: "What's the weather like in Boston?"),
+        new Message(role: Role::User, message: "What's the weather like in Boston?"),
     ],
 );
 $chat->addTool($weatherTool);
-$chat->setToolChoice(ToolChoice::auto);
+$chat->setToolChoice(ToolChoice::Auto);
 
 // First call: model may respond with tool_calls
 $response = $client->chat()->create($chat->toApi());
@@ -190,14 +190,14 @@ if (!empty($assistantMessage->toolCalls)) {
     $followUp = new Chat(
         model: 'gpt-4o',
         messages: [
-            new Message(role: Role::user, message: "What's the weather like in Boston?"),
+            new Message(role: Role::User, message: "What's the weather like in Boston?"),
             new Message(
-                role: Role::assistant,
+                role: Role::Assistant,
                 message: null,
                 toolCalls: array_map(fn($tc) => $tc->toArray(), $assistantMessage->toolCalls),
             ),
             new Message(
-                role: Role::tool,
+                role: Role::Tool,
                 message: json_encode($weatherResult),
                 toolCallId: $toolCall->id,
             ),

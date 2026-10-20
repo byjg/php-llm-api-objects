@@ -34,11 +34,11 @@ class JiraRSSCommentsImporter
     public function toMessages(array &$messages): void
     {
         $messages[] = new Message(
-            role: Role::user,
+            role: Role::User,
             message: 'As informacoes abaixo são os comentários dos atividades no Jira'
         );
         $messages[] = new Message(
-            role: Role::assistant,
+            role: Role::Assistant,
             message: 'OK. Eu vou guardar essas informações para você.'
         );
 
@@ -52,11 +52,11 @@ class JiraRSSCommentsImporter
                 "\n";
 
             $messages[] = new Message(
-                role: Role::user,
+                role: Role::User,
                 message: $texto
             );
             $messages[] = new Message(
-                role: Role::assistant,
+                role: Role::Assistant,
                 message: 'OK.'
             );
         }

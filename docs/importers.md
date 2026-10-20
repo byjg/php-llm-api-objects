@@ -70,7 +70,7 @@ $comments->toMessages($messages);
 
 // Ask a question about the loaded data
 $messages[] = new Message(
-    role: Role::user,
+    role: Role::User,
     message: 'What is the average time between ticket creation and last update?',
 );
 

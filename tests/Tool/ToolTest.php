@@ -1,6 +1,6 @@
 <?php
 
-namespace ByJG\LlmApiObjects\Tests\Tool;
+namespace Tests\Tool;
 
 use ByJG\LlmApiObjects\Tool\Tool;
 use ByJG\LlmApiObjects\Tool\ToolFunction;

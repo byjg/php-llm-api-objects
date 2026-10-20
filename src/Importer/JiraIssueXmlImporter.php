@@ -77,11 +77,11 @@ class JiraIssueXmlImporter
     public function toMessages(array &$messages): void
     {
         $messages[] = new Message(
-            role: Role::user,
+            role: Role::User,
             message: "As informacões abaixo são os tickets/issues das atividades no Jira. Preciso que guarde todas as informações para mim, como o status/situacao, prioridade, etc."
         );
         $messages[] = new Message(
-            role: Role::assistant,
+            role: Role::Assistant,
             message: 'OK. Eu vou guardar essas informações para você.'
         );
 
@@ -110,12 +110,12 @@ class JiraIssueXmlImporter
                 "\n";
 
             $messages[] = new Message(
-                role: Role::user,
+                role: Role::User,
                 message: $texto
             );
 
             $messages[] = new Message(
-                role: Role::assistant,
+                role: Role::Assistant,
                 message: "OK. Guardei as informações do ticket {$item['key']}."
             );
         }

@@ -1,6 +1,6 @@
 <?php
 
-namespace ByJG\LlmApiObjects\Tests;
+namespace Tests;
 
 use ByJG\LlmApiObjects\Enum\Role;
 use ByJG\LlmApiObjects\Model\Message;
@@ -10,7 +10,7 @@ class MessageTest extends TestCase
 {
     public function testSimpleUserMessage(): void
     {
-        $msg = new Message(role: Role::user, message: 'Hello');
+        $msg = new Message(role: Role::User, message: 'Hello');
         $result = $msg->toApi();
 
         $this->assertCount(1, $result);
@@ -21,7 +21,7 @@ class MessageTest extends TestCase
 
     public function testSystemMessage(): void
     {
-        $msg = new Message(role: Role::system, message: 'You are a helpful assistant.');
+        $msg = new Message(role: Role::System, message: 'You are a helpful assistant.');
         $result = $msg->toApi();
 
         $this->assertCount(1, $result);
@@ -31,7 +31,7 @@ class MessageTest extends TestCase
 
     public function testAssistantMessage(): void
     {
-        $msg = new Message(role: Role::assistant, message: 'I can help with that.');
+        $msg = new Message(role: Role::Assistant, message: 'I can help with that.');
         $result = $msg->toApi();
 
         $this->assertSame('assistant', $result[0]['role']);
@@ -40,7 +40,7 @@ class MessageTest extends TestCase
 
     public function testDeveloperMessage(): void
     {
-        $msg = new Message(role: Role::developer, message: 'Always respond in JSON.');
+        $msg = new Message(role: Role::Developer, message: 'Always respond in JSON.');
         $result = $msg->toApi();
 
         $this->assertSame('developer', $result[0]['role']);
@@ -49,7 +49,7 @@ class MessageTest extends TestCase
 
     public function testToolRoleMessage(): void
     {
-        $msg = new Message(role: Role::tool, message: '{"temperature": 22}', toolCallId: 'call_abc123');
+        $msg = new Message(role: Role::Tool, message: '{"temperature": 22}', toolCallId: 'call_abc123');
         $result = $msg->toApi();
 
         $this->assertCount(1, $result);
@@ -60,7 +60,7 @@ class MessageTest extends TestCase
 
     public function testToolCallIdAbsentWhenNull(): void
     {
-        $msg = new Message(role: Role::user, message: 'Hello', toolCallId: null);
+        $msg = new Message(role: Role::User, message: 'Hello', toolCallId: null);
         $result = $msg->toApi();
 
         $this->assertArrayNotHasKey('tool_call_id', $result[0]);
@@ -72,7 +72,7 @@ class MessageTest extends TestCase
         $toolCalls = [
             ['id' => 'call_abc', 'type' => 'function', 'function' => ['name' => 'get_weather', 'arguments' => '{"location":"Paris"}']],
         ];
-        $msg = new Message(role: Role::assistant, message: null, toolCalls: $toolCalls);
+        $msg = new Message(role: Role::Assistant, message: null, toolCalls: $toolCalls);
         $result = $msg->toApi();
 
         $this->assertCount(1, $result);
@@ -87,7 +87,7 @@ class MessageTest extends TestCase
         $toolCalls = [
             ['id' => 'call_xyz', 'type' => 'function', 'function' => ['name' => 'search', 'arguments' => '{"q":"php"}']],
         ];
-        $msg = new Message(role: Role::assistant, message: 'Let me search that.', toolCalls: $toolCalls);
+        $msg = new Message(role: Role::Assistant, message: 'Let me search that.', toolCalls: $toolCalls);
         $result = $msg->toApi();
 
         $this->assertSame('assistant', $result[0]['role']);
@@ -97,7 +97,7 @@ class MessageTest extends TestCase
 
     public function testDelimiterSplitsIntoMultipleMessages(): void
     {
-        $msg = new Message(role: Role::user, message: 'part1|part2|part3', delimiter: '|');
+        $msg = new Message(role: Role::User, message: 'part1|part2|part3', delimiter: '|');
         $result = $msg->toApi();
 
         $this->assertCount(3, $result);
@@ -114,7 +114,7 @@ class MessageTest extends TestCase
     {
         // 5 words per chunk max; feed 12 words
         $words = implode(' ', array_fill(0, 12, 'word'));
-        $msg = new Message(role: Role::user, message: $words, maxTokens: 5);
+        $msg = new Message(role: Role::User, message: $words, maxTokens: 5);
         $result = $msg->toApi();
 
         $this->assertGreaterThan(1, count($result));

@@ -4,9 +4,9 @@ namespace ByJG\LlmApiObjects\Enum;
 
 enum Role: string
 {
-    case user = 'user';
-    case assistant = 'assistant';
-    case system = 'system';
-    case developer = 'developer';
-    case tool = 'tool';
+    case User = 'user';
+    case Assistant = 'assistant';
+    case System = 'system';
+    case Developer = 'developer';
+    case Tool = 'tool';
 }
