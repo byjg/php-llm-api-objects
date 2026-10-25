@@ -5,7 +5,7 @@ tags: [php, ai]
 
 # LLM API Objects
 
-Strongly-typed PHP model layer for building OpenAI Chat Completions API request payloads.
+Typed PHP objects for Chat Completions requests (messages, tools, tool calls) that work with both OpenAI and Ollama.
 Works with both OpenAI and Ollama (via the `/v1` OpenAI-compatible endpoint) using the [`openai-php/client`](https://github.com/openai-php/client).
 
 [![Sponsor](https://img.shields.io/badge/Sponsor-%23ea4aaa?logo=githubsponsors&logoColor=white&labelColor=0d1117)](https://github.com/sponsors/byjg)
@@ -15,6 +15,20 @@ Works with both OpenAI and Ollama (via the `/v1` OpenAI-compatible endpoint) usi
 [![GitHub source](https://img.shields.io/badge/Github-source-informational?logo=github)](https://github.com/byjg/php-llm-api-objects/)
 [![GitHub license](https://img.shields.io/github/license/byjg/php-llm-api-objects.svg)](https://opensource.byjg.com/license/)
 [![GitHub release](https://img.shields.io/github/release/byjg/php-llm-api-objects.svg)](https://github.com/byjg/php-llm-api-objects/releases/)
+
+## Why
+
+A chat completion request is a deeply nested array: roles, content, tools with JSON-schema
+parameters, tool calls and their ids. Built by hand, a typo becomes an API error at runtime,
+and a long document has to be cut to fit the context by you.
+
+LLM API Objects builds the request from typed classes (`Chat`, `Message`, `Tool`,
+`ToolFunction`, `ToolParameter`), so the IDE and static analysis catch the mistakes before
+the call.
+
+- **OpenAI and Ollama with the same objects**, through Ollama's OpenAI-compatible endpoint.
+- **Long content split for you.** A message is split into chunks by a delimiter and by an
+  approximate token limit (`maxTokens`).
 
 ## Features
 
