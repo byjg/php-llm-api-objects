@@ -1,5 +1,6 @@
 ---
 sidebar_key: llm-api-objects
+sidebar_category: text-content
 tags: [php, ai]
 ---
 
